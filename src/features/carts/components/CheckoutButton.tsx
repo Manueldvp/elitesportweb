@@ -1,6 +1,5 @@
 "use client";
 import React, { useState } from "react";
-import { getStripe } from "@/lib/stripe/stripeClient";
 import { cn } from "@/lib/utils";
 import { Spinner } from "@/components/ui/spinner";
 import { Button } from "@/components/ui/button";
@@ -32,8 +31,7 @@ function CheckoutButton({ order, guest, ...props }: CheckoutButtonProps) {
     const { sessionId } = await res.json();
 
     setIsLoading(false);
-    const stripe = await getStripe();
-    stripe?.redirectToCheckout({ sessionId });
+    
   };
   return (
     <Button
